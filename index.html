@@ -16,7 +16,7 @@
       <!-- description part -->
       <div class="w-3/4 mx-auto pt-12 flex flex-col items-center lg:flex-row">
         <div class="text-center">
-          <p class="text-2xl">---SALE FEVER---</p>
+          <p class="text-2xl">---SUPER SALE---</p>
           <h3 class="text-5xl mt-6 mb-6 drop-shadow-lg">Purchase TK 200 or <br> above & get <span
               class="text-[#E527B2]">20% off</span></h3>
           <div class="flex justify-center items-center text-2xl">
@@ -33,18 +33,19 @@
   </header>
   <main>
     <!-- card section -->
-    <section class="w-11/12 mx-auto mt-[100px] py-2 border-2">
+    <section class="w-11/12 mx-auto mt-[100px] py-2">
 
       <div class="flex flex-col lg:flex-row">
         <!-- card item -->
         <!-- kitchen accessories -->
-        <div class="border-2">
+        <div class="">
 
           <div class="mb-4">
             <h2 class="card-title text-4xl mb-[30px]">Kitchenware</h2>
             <div class="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4">
               <!-- spoon -->
-              <div onclick="priceCalculator('spoon-price')" class="card w-64 bg-base-100 border rounded-xl ml-[20px]">
+              <div onclick="priceCalculator('spoon-price', 'Spoon')"
+                class="card w-64 bg-base-100 border rounded-xl ml-[20px]">
                 <figure class="px-10 py-10 bg-gray-100 rounded-xl">
                   <img src="images/prod1.png" alt="Shoes" class="rounded-xl" />
                 </figure>
@@ -61,7 +62,8 @@
                 </div>
               </div>
               <!-- chopping board -->
-              <div onclick="priceCalculator('board-price')" class="card w-64 bg-base-100 border rounded-xl ml-[20px]">
+              <div onclick="priceCalculator('board-price', 'Chopping Board')"
+                class="card w-64 bg-base-100 border rounded-xl ml-[20px]">
                 <figure class="px-10 py-10 bg-gray-100 rounded-xl">
                   <img src="images/prod2.png" alt="Shoes" class="rounded-xl" />
                 </figure>
@@ -78,7 +80,8 @@
                 </div>
               </div>
               <!-- cooker -->
-              <div onclick="priceCalculator('cooker-price')" class="card w-64 bg-base-100 border rounded-xl ml-[20px]">
+              <div onclick="priceCalculator('cooker-price', 'Cooker')"
+                class="card w-64 bg-base-100 border rounded-xl ml-[20px]">
                 <figure class="px-10 py-10 bg-gray-100 rounded-xl">
                   <img src="images/prod3.png" alt="Shoes" class="rounded-xl" />
                 </figure>
@@ -101,7 +104,8 @@
             <h2 class="card-title text-4xl mb-[30px]">Sportsware</h2>
             <div class="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4">
               <!-- cap -->
-              <div onclick="priceCalculator('cap-price')" class="card w-64 bg-base-100 border rounded-xl ml-[20px]">
+              <div onclick="priceCalculator('cap-price', 'Cap')"
+                class="card w-64 bg-base-100 border rounded-xl ml-[20px]">
                 <figure class="px-10 py-10 bg-gray-100 rounded-xl">
                   <img src="images/prod4.png" alt="Shoes" class="rounded-xl" />
                 </figure>
@@ -118,7 +122,8 @@
                 </div>
               </div>
               <!-- jersey -->
-              <div onclick="priceCalculator('jersey-price')" class="card w-64 bg-base-100 border rounded-xl ml-[20px]">
+              <div onclick="priceCalculator('jersey-price', 'Jersey')"
+                class="card w-64 bg-base-100 border rounded-xl ml-[20px]">
                 <figure class="px-10 py-10 bg-gray-100 rounded-xl">
                   <img src="images/prod5.png" alt="Shoes" class="rounded-xl" />
                 </figure>
@@ -135,7 +140,8 @@
                 </div>
               </div>
               <!-- shoe -->
-              <div onclick="priceCalculator('shoe-price')" class="card w-64 bg-base-100 border rounded-xl ml-[20px]">
+              <div onclick="priceCalculator('shoe-price', 'Shoe')"
+                class="card w-64 bg-base-100 border rounded-xl ml-[20px]">
                 <figure class="px-10 py-10 bg-gray-100 rounded-xl">
                   <img src="images/prod6.png" alt="Shoes" class="rounded-xl" />
                 </figure>
@@ -155,9 +161,9 @@
           </div>
         </div>
         <!-- card summary -->
-        <div class="w-[300px] lg:ml-auto border-2">
+        <div class="w-[300px] lg:ml-auto mt-6">
           <!-- input coupon area -->
-          <div>
+          <div class="shadow-xl rounded mb-4 px-4 py-2">
             <h2 class="text-2xl">Have Coupon?</h2>
             <div class="flex">
               <input id="input-coupon" type="text" placeholder="Coupon Code"
@@ -167,22 +173,54 @@
           </div>
 
           <!-- item description area -->
-          <div>
+          <div class="shadow-xl rounder px-4 py-2">
             <!-- Selected Items summary -->
-            <div></div>
+            <div id="selected-items" class="border-b-2">
+
+            </div>
 
             <!-- price summary -->
-            <div class="mt-4">
+            <div class="mt-4 mb-2 border-b-2">
               <h3 class="text-xl">Total Price:<span id="total-price">00</span></h3>
 
               <h3 class="text-xl">Discount:<span id="discount-price">00</span></h3>
 
               <h3 class="text-xl">Total:<span id="total">00</span></h3>
             </div>
+            <button onclick="my_modal_1.showModal()" id="make-purchase" class="btn-sm btn btn-secondary" disabled>Make
+              Purchase</button>
           </div>
         </div>
       </div>
     </section>
+    <!-- Congratulations -->
+    <dialog id="my_modal_1" class="modal">
+      <div class="modal-box">
+        <!-- <div class="card w-96 bg-base-100 shadow-xl"> -->
+          <div class="card-body items-center text-center">
+            <figure class="px-10 pt-10">
+              <img src="images/congo.png" class="rounded-xl" />
+            </figure>
+            <h2 class="card-title text-xl">Congratulations</h2>
+            <p>You Purchase the product</p>
+            <div class="modal-action">
+              <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn-md btn btn-secondary">Go Home</button>
+              </form>
+            </div>
+          </div>
+        <!-- </div> -->
+        
+      </div>
+    </dialog>
+
+    <!-- <section id="section-modal">
+      <div>
+
+      </div>
+      <img id="img-congrats" class="w-3/4" src="images/congo.png" alt="">
+    </section> -->
   </main>
   <script src="js/script.js"></script>
   <script src="js/price-calculator.js"></script>
